@@ -1,11 +1,11 @@
-int outpin[] = {37, 39, 41, 43, 45, 47, 49};
-int outc = 7;
-int inpin[] = {30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52};
-int inc = 12;
-int butpin[] = {29,28,31,33,26,51};
-int butc = 6;
-int butgnd = 53;
-int ledpin = 13;
+int outpin[] = {2, 3, 4, 5, 6, 7, 8, 9};
+int outc = 8;
+int inpin[] = {10, 11, 12, 13, 14, 15, 16, 17};
+int inc = 8;
+int butpin[] = {18};
+int butc = 1;
+int butgnd = 19;
+int ledpin = 20;
 int out;
 int in;
 int i;
@@ -40,22 +40,24 @@ void loop() {
      digitalWrite(outpin[out], LOW);
      for (in = 0; in < inc; in++) {
         if (! digitalRead(inpin[in])) {
-           Serial.write((out << 4) + in);
-           digitalWrite(ledpin, LOW);
+           Serial.print(out);
+           Serial.print(',');
+           Serial.println(in);
+           //digitalWrite(ledpin, LOW);
            delay(250);
            while (! digitalRead(inpin[in])) {
-              Serial.write(0x70);
-              delay(400);
+              //Serial.println(out +","+in);
+              delay(100);
            }
            delay(250);
-           digitalWrite(ledpin, HIGH);
+           //digitalWrite(ledpin, HIGH);
         }
      }
      digitalWrite(outpin[out], HIGH);
   }  
   for (i = 0; i < butc; i++) {
     if (! digitalRead(butpin[i])) {
-      Serial.write(0x80 + i);
+      Serial.println("B:" + i);
       digitalWrite(ledpin, LOW);
       delay(400);
       while (! digitalRead(butpin[i])) {

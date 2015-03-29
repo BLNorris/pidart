@@ -40,14 +40,12 @@ void loop() {
      digitalWrite(outpin[out], LOW);
      for (in = 0; in < inc; in++) {
         if (! digitalRead(inpin[in])) {
-           Serial.print(out);
-           Serial.print(',');
-           Serial.println(in);
+           Serial.write((out << 4) + in);
            //digitalWrite(ledpin, LOW);
            delay(250);
            while (! digitalRead(inpin[in])) {
-              //Serial.println(out +","+in);
-              delay(100);
+              Serial.write(0x70);
+              delay(300);
            }
            delay(250);
            //digitalWrite(ledpin, HIGH);
@@ -57,7 +55,7 @@ void loop() {
   }  
   for (i = 0; i < butc; i++) {
     if (! digitalRead(butpin[i])) {
-      Serial.println("B:" + i);
+      Serial.write(0x80 + i);
       digitalWrite(ledpin, LOW);
       delay(400);
       while (! digitalRead(butpin[i])) {

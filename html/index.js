@@ -334,7 +334,7 @@ angular.module('darts', ['googlechart', 'ui.sortable'])
     var state = {};
     var settings = {
 	sound: 'espeak',
-	inputDevice: '',
+	inputDevice: '/dev/ttyACM0',
 	logging: true
     };
 

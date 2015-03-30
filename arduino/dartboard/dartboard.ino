@@ -60,7 +60,7 @@ void loop() {
       delay(400);
       while (! digitalRead(butpin[i])) {
         Serial.write(0x70);
-        delay(300);
+        delay(600);
       }
       delay(250);
       //digitalWrite(ledpin, HIGH);

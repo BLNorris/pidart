@@ -443,7 +443,7 @@ if __name__ == "__main__":
                         help="initial number of points")
     parser.add_argument('--snd', default='isat',
                         help="sound system (none/isat/legacy/espeak)")
-    parser.add_argument('--dev', default='', 
+    parser.add_argument('--dev', default='/dev/ttyACM0', 
                         help="input USB device (use empty string for no serial input)")
     parser.add_argument('--file', help="Read input from this file.", default='')
     parser.add_argument('--debug', action='store_true', help="Enable debug output")
